@@ -1,0 +1,49 @@
+18:01:21 **** Incremental Build of configuration Debug for project stm32f105SpiFlash ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/w25qxx.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F105xC -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/w25qxx.d" -MT"Core/Src/w25qxx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/w25qxx.o"
+../Core/Src/w25qxx.c: In function 'W25qxx_Write':
+../Core/Src/w25qxx.c:987:2: warning: implicit declaration of function 'printmsg'; did you mean 'printf'? [-Wimplicit-function-declaration]
+  987 |  printmsg("---%ld\r\n",spistruct.writeOffset);
+      |  ^~~~~~~~
+      |  printf
+../Core/Src/w25qxx.c: In function 'W25qxx_Read':
+../Core/Src/w25qxx.c:1011:16: warning: pointer targets in passing argument 1 of 'strstr' differ in signedness [-Wpointer-sign]
+ 1011 |   ret = strstr(buffer,"\r\n");
+      |                ^~~~~~
+      |                |
+      |                uint8_t * {aka unsigned char *}
+In file included from ../Core/Inc/w25qxx.h:41,
+                 from ../Core/Src/w25qxx.c:3:
+/opt/st/stm32cubeide_1.11.2/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.100.202210260954/tools/arm-none-eabi/include/string.h:48:16: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   48 | char  *strstr (const char *, const char *);
+      |                ^~~~~~~~~~~~
+../Core/Src/w25qxx.c:1011:7: warning: pointer targets in assignment from 'char *' to 'uint8_t *' {aka 'unsigned char *'} differ in signedness [-Wpointer-sign]
+ 1011 |   ret = strstr(buffer,"\r\n");
+      |       ^
+../Core/Src/w25qxx.c:1029:18: warning: pointer targets in passing argument 1 of 'strstr' differ in signedness [-Wpointer-sign]
+ 1029 |     ret = strstr(buffer,"\r\n");
+      |                  ^~~~~~
+      |                  |
+      |                  uint8_t * {aka unsigned char *}
+In file included from ../Core/Inc/w25qxx.h:41,
+                 from ../Core/Src/w25qxx.c:3:
+/opt/st/stm32cubeide_1.11.2/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.linux64_1.0.100.202210260954/tools/arm-none-eabi/include/string.h:48:16: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+   48 | char  *strstr (const char *, const char *);
+      |                ^~~~~~~~~~~~
+../Core/Src/w25qxx.c:1029:9: warning: pointer targets in assignment from 'char *' to 'uint8_t *' {aka 'unsigned char *'} differ in signedness [-Wpointer-sign]
+ 1029 |     ret = strstr(buffer,"\r\n");
+      |         ^
+arm-none-eabi-gcc -o "stm32f105SpiFlash.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/yakup/ProjectWorkspace/th-x-spiFlash/stm32f105SpiFlash/STM32F105VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32f105SpiFlash.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32f105SpiFlash.elf
+ 
+arm-none-eabi-size   stm32f105SpiFlash.elf 
+arm-none-eabi-objdump -h -S  stm32f105SpiFlash.elf  > "stm32f105SpiFlash.list"
+   text	   data	    bss	    dec	    hex	filename
+  14904	    120	  27448	  42472	   a5e8	stm32f105SpiFlash.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32f105SpiFlash.list
+ 
+
+18:01:22 Build Finished. 0 errors, 5 warnings. (took 902ms)
+
